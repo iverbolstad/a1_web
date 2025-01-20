@@ -33,6 +33,16 @@ export async function getLogo() {
   return posts;
 }
 
+export async function getImage() {
+  const posts = await client.fetch(
+    `*[_type == "bilde"]{
+      tekst, 
+      "imageUrl": bilde.asset->url
+    }`
+  );
+  return posts;
+}
+
 export async function getForside() {
   const posts = await client.fetch(
     `*[_type == "forside"]{

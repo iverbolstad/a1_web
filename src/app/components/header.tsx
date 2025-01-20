@@ -48,8 +48,8 @@ export const Header = () => {
           <Link href={"/tjenester"}>
             <Button variant="link">Tjenester</Button>
           </Link>
-          <Link href={"/prosjekter"}>
-            <Button variant="link">Prosjekter</Button>
+          <Link href={"/omoss"}>
+            <Button variant="link">Om oss</Button>
           </Link>
           <Link href={"/kontakt"}>
             <Button variant="link">Kontakt</Button>

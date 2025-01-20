@@ -1,8 +1,16 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getForside, getKundeLogo } from "../lib/sanity";
+import { getForside, getImage, getKundeLogo } from "../lib/sanity";
 import Image from "next/image";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
+
 
 interface Event {
   tekst: string;
@@ -14,17 +22,25 @@ interface Kunde {
   imageUrl: string;
 }
 
+interface Bilde {
+  tekst: string;
+  imageUrl: string;
+}
+
 const EventsPage = () => {
   const [events, setEvents] = useState<Event[]>([]);
   const [loading, setLoading] = useState(true);
   const [kunde, setKunde] = useState<Kunde[]>([]);
+  const [bilde, setBilde] = useState<Bilde[]>([]);
+
 
   useEffect(() => {
     async function fetchEvents() {
       try {
         const data = await getForside();
         const kunde = await getKundeLogo();
-        console.log(kunde);
+        const bilde = await getImage();
+        setBilde(bilde);
         setKunde(kunde);
         setEvents(data);
         console.log(data);
@@ -75,7 +91,7 @@ const EventsPage = () => {
         ))}
       </div>
       <div className="flex justify-center mb-5">
-        <div className="w-2/3">
+        <div className="w-2/3 my-10">
           {/* <p className="mt-10 text-3xl font-semibold">
             Oppdag våre unike landskapskunnskaper
           </p>
@@ -84,7 +100,7 @@ const EventsPage = () => {
             utendørsområde til et vakkert og bærekraftig landskap, skreddersydd
             perfekt til dine behov og preferanser
           </p> */}
-          <p className="mt-10 text-3xl font-semibold">Om oss</p>
+          {/* <p className="mt-10 text-3xl font-semibold">Om oss</p>
           <p className="mt-5 text-xl">
             Vi kan hjelpe deg med å ta vare på uteområder og parker. Vår
             ekspertise ligger i drift og vedlikehold av parker, hager og
@@ -97,7 +113,26 @@ const EventsPage = () => {
             kirkegårder og idrettsanlegg. En fast vedlikeholdsavtale med oss
             sikrer deg at grøntområder og uteanlegg alltid vil fremstå som
             ryddige, pene og trygge.
-          </p>
+          </p> */}
+          <Carousel className="w-full">
+            <CarouselContent>
+              {bilde.map((bildeItem, index) => (
+                <CarouselItem key={index} className="flex items-center justify-center">
+                  <div className="relative w-[400px] h-[300px]">
+                    <Image 
+                      src={bildeItem.imageUrl} 
+                      alt={bildeItem.tekst} 
+                      fill={true}
+                      className="object-cover rounded-lg"
+                    />
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
+
         </div>
       </div>
       {/* <div className="flex justify-center mb-5">
