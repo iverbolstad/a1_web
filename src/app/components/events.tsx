@@ -50,23 +50,23 @@ const EventsPage = () => {
   }, []);
 
   if (loading) {
-    return <p>Loading events...</p>;
+    return <p>Laster...</p>;
   }
 
   return (
     <div className="mt-10">
       <div className="my-20">
         {homePage.map((event, idx) => (
-          <div className="flex w-full h-[70vh]" key={idx}>
-            <div className="flex flex-col items-center justify-center w-1/2 bg-opacity-80 px-6 py-2">
-              <div className="text-5xl">{event.tekst}</div>
+          <div className="flex flex-col md:flex-row w-full min-h-[50vh] md:h-[70vh]" key={idx}>
+            <div className="flex flex-col items-center justify-center w-full md:w-1/2 bg-opacity-80 px-6 py-8 md:py-2">
+              <div className="text-3xl md:text-5xl text-center">{event.tekst}</div>
               <Link href="/tjenester">
                 <Button variant="outline" className="mt-8 bg-gray-800 text-white hover:bg-gray-700">
                   Utforsk våre tjenester
                 </Button>
               </Link>
             </div>
-            <div className="relative w-1/2 h-full">
+            <div className="relative w-full md:w-1/2 h-[40vh] md:h-full">
               <Image
                 src={event.imageUrl}
                 fill={true}

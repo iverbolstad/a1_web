@@ -82,16 +82,16 @@ export const Header = () => {
         isMenuOpen ? 'max-h-[200px] opacity-100' : 'max-h-0 opacity-0'
       }`}>
         <div className="pt-4 flex flex-col space-y-2">
-          <Link href={"/"}>
+          <Link href={"/"} onClick={() => setIsMenuOpen(false)}>
             <Button variant="link" className="w-full">Hjem</Button>
           </Link>
-          <Link href={"/tjenester"}>
+          <Link href={"/tjenester"} onClick={() => setIsMenuOpen(false)}>
             <Button variant="link" className="w-full">Tjenester</Button>
           </Link>
-          <Link href={"/omoss"}>
+          <Link href={"/omoss"} onClick={() => setIsMenuOpen(false)}>
             <Button variant="link" className="w-full">Om oss</Button>
           </Link>
-          <Link href={"/kontakt"}>
+          <Link href={"/kontakt"} onClick={() => setIsMenuOpen(false)}>
             <Button variant="link" className="w-full">Kontakt</Button>
           </Link>
         </div>

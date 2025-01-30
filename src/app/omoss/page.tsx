@@ -32,7 +32,7 @@ export default function OmOss() {
     }, []);
 
     if (loading) {
-        return <p>Loading events...</p>;
+        return <p>Laster...</p>;
     }
     return (
         <div className="container mx-auto px-4 py-16 max-w-6xl">

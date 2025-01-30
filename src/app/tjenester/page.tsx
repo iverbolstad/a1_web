@@ -31,9 +31,9 @@ export default function Tjenester() {
     }, []);
 
     return (
-        <div className="container mx-auto py-8">
+        <div className="container mx-auto py-8 px-4 sm:px-6 lg:px-8">
             <h1 className="text-4xl font-bold mb-12 text-center">Våre tjenester</h1>
-            <div className="space-y-8">
+            <div className="space-y-12 md:space-y-16">
                 {tjenester.map((tjeneste: Tjeneste, index: number) => (
                     <div 
                         key={index} 
@@ -43,10 +43,10 @@ export default function Tjenester() {
                             <img 
                                 src={tjeneste.imageUrl} 
                                 alt={tjeneste.title || 'Tjeneste bilde'} 
-                                className="w-full h-[400px] object-cover rounded-lg"
+                                className="w-full h-[300px] sm:h-[400px] object-cover rounded-lg"
                             />
                         </div>
-                        <div className="w-full md:w-1/2">
+                        <div className="w-full md:w-1/2 px-1 sm:px-0">
                             <h2 className="text-2xl font-bold mb-4">{tjeneste.title}</h2>
                             <p className="text-lg">{tjeneste.beskrivelse}</p>
                         </div>
