@@ -97,7 +97,7 @@ const EventsPage = () => {
           </div>
         ))}
       </div>
-      <div className="flex justify-center mb-5">
+      {/* <div className="flex justify-center mb-5">
         <div className="w-2/3 my-10">
           <Carousel className="w-full">
             <CarouselContent>
@@ -119,7 +119,7 @@ const EventsPage = () => {
           </Carousel>
 
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

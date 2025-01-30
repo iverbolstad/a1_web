@@ -13,6 +13,7 @@ export const Footer = () => {
         </div>
         <div className="flex-1 text-right">
           <p>&copy; {new Date().getFullYear()} - Anleggsgartner 1 AS</p>
+          <p>Created by <a href="https://www.linkedin.com/in/iver-bye-bolstad-167292227/" target="_blank" rel="noopener noreferrer">Iver Bolstad</a></p>
         </div>
       </div>
     </footer>
