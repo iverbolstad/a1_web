@@ -32,6 +32,7 @@ export default function Tjenester() {
 
     return (
         <div className="container mx-auto py-8">
+            <h1 className="text-4xl font-bold mb-12 text-center">Våre tjenester</h1>
             <div className="space-y-8">
                 {tjenester.map((tjeneste: Tjeneste, index: number) => (
                     <div 

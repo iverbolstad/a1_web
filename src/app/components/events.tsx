@@ -10,6 +10,8 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
+import { Button } from "@/components/ui/button"
+import Link from "next/link"
 
 
 interface Event {
@@ -63,8 +65,13 @@ const EventsPage = () => {
       <div className="my-20">
         {events.map((event, idx) => (
           <div className="flex w-full h-[70vh]" key={idx}>
-            <div className="flex items-center justify-center w-1/2 bg-opacity-80 px-6 py-2 text-5xl">
-              {event.tekst}
+            <div className="flex flex-col items-center justify-center w-1/2 bg-opacity-80 px-6 py-2">
+              <div className="text-5xl">{event.tekst}</div>
+              <Link href="/tjenester">
+                <Button variant="outline" className="mt-8 bg-gray-800 text-white hover:bg-gray-700">
+                  Utforsk våre tjenester
+                </Button>
+              </Link>
             </div>
             <div className="relative w-1/2 h-full">
               <Image
@@ -92,36 +99,14 @@ const EventsPage = () => {
       </div>
       <div className="flex justify-center mb-5">
         <div className="w-2/3 my-10">
-          {/* <p className="mt-10 text-3xl font-semibold">
-            Oppdag våre unike landskapskunnskaper
-          </p>
-          <p className="mt-5 text-xl">
-            Utforsk vårt utvalg av tjenester designet for å forvandle ditt
-            utendørsområde til et vakkert og bærekraftig landskap, skreddersydd
-            perfekt til dine behov og preferanser
-          </p> */}
-          {/* <p className="mt-10 text-3xl font-semibold">Om oss</p>
-          <p className="mt-5 text-xl">
-            Vi kan hjelpe deg med å ta vare på uteområder og parker. Vår
-            ekspertise ligger i drift og vedlikehold av parker, hager og
-            rekreasjonsområder. Vi tilbyr opparbeidelse av tomter,
-            prosjektutvikling av uterom, levering av steinprodukter,
-            anleggsarbeid m.m. Alt fra legging og vedlikehold av
-            natursteinsarbeider i brostein, skifer, granitt og lignende utføres
-            av våre dyktige fagarbeidere. Vi har gjort opparbeidelse og
-            vedlikeholdsjobber i blant annet hageanlegg, parker, torg,
-            kirkegårder og idrettsanlegg. En fast vedlikeholdsavtale med oss
-            sikrer deg at grøntområder og uteanlegg alltid vil fremstå som
-            ryddige, pene og trygge.
-          </p> */}
           <Carousel className="w-full">
             <CarouselContent>
               {bilde.map((bildeItem, index) => (
                 <CarouselItem key={index} className="flex items-center justify-center">
                   <div className="relative w-[400px] h-[300px]">
-                    <Image 
-                      src={bildeItem.imageUrl} 
-                      alt={bildeItem.tekst} 
+                    <Image
+                      src={bildeItem.imageUrl}
+                      alt={bildeItem.tekst}
                       fill={true}
                       className="object-cover rounded-lg"
                     />
@@ -135,11 +120,6 @@ const EventsPage = () => {
 
         </div>
       </div>
-      {/* <div className="flex justify-center mb-5">
-        <div className="border">hei</div>
-        <div className="border">hei</div>
-        <div className="border">hei</div>
-      </div> */}
     </div>
   );
 };
