@@ -84,22 +84,33 @@ const EventsPage = () => {
           </div>
         ))}
       </div>
-      <div className="flex w-full h-[20vh] bg-[#E8EDDF] items-center justify-center space-x-36">
-        {kunde.map((kundeItem, index) => (
-          <div key={index} className="relative">
-            <Image
-              src={kundeItem.imageUrl}
-              width={100}
-              height={100}
-              alt={""}
-              className="object-cover"
-            />
+      <div className="py-16 bg-[#E8EDDF]">
+        <div className="container mx-auto">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl font-bold text-gray-800 mb-3">Våre samarbeidspartnere</h2>
+            <p className="text-gray-600">Vi er stolte av å samarbeide med disse fantastiske selskapene</p>
           </div>
-        ))}
+          <div className="flex flex-wrap items-center justify-center gap-12 md:gap-16">
+            {kunde.map((kundeItem, index) => (
+              <div 
+                key={index} 
+                className="relative group transition-transform hover:scale-105"
+              >
+                <Image
+                  src={kundeItem.imageUrl}
+                  width={120}
+                  height={120}
+                  alt={kundeItem.tekst || "Partner logo"}
+                  className="object-contain transition-all duration-300"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
-      {/* <div className="flex justify-center mb-5">
+      <div className="flex justify-center mb-5">
         <div className="w-2/3 my-10">
-          <Carousel className="w-full">
+          {/* <Carousel className="w-full">
             <CarouselContent>
               {bilde.map((bildeItem, index) => (
                 <CarouselItem key={index} className="flex items-center justify-center">
@@ -116,10 +127,11 @@ const EventsPage = () => {
             </CarouselContent>
             <CarouselPrevious />
             <CarouselNext />
-          </Carousel>
+          </Carousel> */}
+          <p>Her kommer pågående prosjekter</p>
 
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };
