@@ -35,7 +35,6 @@ const EventsPage = () => {
         const data = await getForside();
         const kunde = await getKundeLogo();
         const events = await getEvents();
-        console.log(events);
         setKunde(kunde);
         setHomePage(data);
         setEvents(events);
@@ -72,6 +71,7 @@ const EventsPage = () => {
                 fill={true}
                 alt={""}
                 className="object-cover"
+                priority
               />
             </div>
           </div>
@@ -106,7 +106,7 @@ const EventsPage = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {events.map((event, index) => (
             <div key={index} className="bg-white rounded shadow overflow-hidden">
-              <div className="relative h-48">
+              <div className="relative h-64">
                 <Image
                   src={event.imageUrl}
                   alt={event.title}

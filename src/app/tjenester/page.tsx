@@ -43,7 +43,7 @@ export default function Tjenester() {
                             <img 
                                 src={tjeneste.imageUrl} 
                                 alt={tjeneste.title || 'Tjeneste bilde'} 
-                                className="w-full h-[300px] sm:h-[400px] object-cover rounded-lg"
+                                className="w-full h-[300px] sm:h-[400px] object-cover rounded"
                             />
                         </div>
                         <div className="w-full md:w-1/2 px-1 sm:px-0">

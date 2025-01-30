@@ -20,7 +20,7 @@ export default function Kontakt() {
                                 type="text"
                                 id="name"
                                 name="name"
-                                className="w-full px-3 py-2 border rounded-md"
+                                className="w-full px-3 py-2 border rounded"
                             />
                         </div>
                         <div>
@@ -34,7 +34,7 @@ export default function Kontakt() {
                                 type="email"
                                 id="email"
                                 name="email"
-                                className="w-full px-3 py-2 border rounded-md"
+                                className="w-full px-3 py-2 border rounded"
                             />
                         </div>
                         <div>
@@ -48,12 +48,12 @@ export default function Kontakt() {
                                 id="message"
                                 name="message"
                                 rows={4}
-                                className="w-full px-3 py-2 border rounded-md"
+                                className="w-full px-3 py-2 border rounded"
                             ></textarea>
                         </div>
                         <button
                             type="submit"
-                            className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors"
+                            className="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition-colors"
                         >
                             Send
                         </button>

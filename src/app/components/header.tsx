@@ -20,7 +20,6 @@ export const Header = () => {
       try {
         const data = await getLogo();
         setLogo(data);
-        console.log(data);
       } catch (error) {
         console.error("Error fetching events:", error);
       } finally {
@@ -36,7 +35,7 @@ export const Header = () => {
         <div className="flex items-center space-x-4">
           <Link href={"/"}>
             {logo[1]?.imageUrl && (
-              <Image src={logo[1].imageUrl} width={250} height={70} alt="Logo" className="max-w-[150px] md:max-w-[250px]" />
+              <Image src={logo[1].imageUrl} width={250} height={70} alt="Logo" className="max-w-[150px] md:max-w-[250px]" priority />
             )}
           </Link>
         </div>

@@ -36,7 +36,7 @@ export default function OmOss() {
     }
     return (
         <div className="container mx-auto px-4 py-16 max-w-6xl">
-            <h1 className="text-4xl font-bold text-gray-900">Om oss</h1>
+            <h1 className="text-4xl font-bold text-gray-900 text-center">Om oss</h1>
 
             <div className="mt-8 lg:flex lg:gap-8">
                 <div className="space-y-8 lg:w-1/2">
@@ -72,7 +72,7 @@ export default function OmOss() {
                                     src={bildeItem.imageUrl}
                                     alt={bildeItem.tekst}
                                     fill={true}
-                                    className="object-cover rounded-md"
+                                    className="object-cover rounded"
                                 />
                             </div>
                         ))}
