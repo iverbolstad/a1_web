@@ -1,10 +1,8 @@
 "use client"
 
 import Image from "next/image";
-// import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { getImage } from "../lib/sanity";
 import { useEffect, useState } from "react";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
 interface Bilde {
     imageUrl: string;

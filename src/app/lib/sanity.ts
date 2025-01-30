@@ -74,10 +74,6 @@ export async function getTjenester() {
   return posts;
 }
 
-export async function createPost(post: any) {
-  const result = client.create(post);
-  return result;
-}
 
 export async function updateDocumentTitle(_id: string, title: string) {
   const result = client.patch(_id).set({ title });
