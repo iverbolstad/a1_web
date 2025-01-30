@@ -1,20 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getForside, getImage, getKundeLogo } from "../lib/sanity";
+import { getForside, getKundeLogo, getEvents } from "../lib/sanity";
 import Image from "next/image";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 
 
-interface Event {
+interface HomePage {
   tekst: string;
   imageUrl: string;
 }
@@ -24,28 +17,28 @@ interface Kunde {
   imageUrl: string;
 }
 
-interface Bilde {
+interface Event {
+  title: string;
   tekst: string;
   imageUrl: string;
 }
 
 const EventsPage = () => {
-  const [events, setEvents] = useState<Event[]>([]);
+  const [homePage, setHomePage] = useState<HomePage[]>([]);
   const [loading, setLoading] = useState(true);
   const [kunde, setKunde] = useState<Kunde[]>([]);
-  const [bilde, setBilde] = useState<Bilde[]>([]);
-
+  const [events, setEvents] = useState<Event[]>([]);
 
   useEffect(() => {
     async function fetchEvents() {
       try {
         const data = await getForside();
         const kunde = await getKundeLogo();
-        const bilde = await getImage();
-        setBilde(bilde);
+        const events = await getEvents();
+        console.log(events);
         setKunde(kunde);
-        setEvents(data);
-        console.log(data);
+        setHomePage(data);
+        setEvents(events);
       } catch (error) {
         console.error("Error fetching events:", error);
       } finally {
@@ -63,7 +56,7 @@ const EventsPage = () => {
   return (
     <div className="mt-10">
       <div className="my-20">
-        {events.map((event, idx) => (
+        {homePage.map((event, idx) => (
           <div className="flex w-full h-[70vh]" key={idx}>
             <div className="flex flex-col items-center justify-center w-1/2 bg-opacity-80 px-6 py-2">
               <div className="text-5xl">{event.tekst}</div>
@@ -108,28 +101,25 @@ const EventsPage = () => {
           </div>
         </div>
       </div>
-      <div className="flex justify-center mb-5">
-        <div className="w-2/3 my-10">
-          {/* <Carousel className="w-full">
-            <CarouselContent>
-              {bilde.map((bildeItem, index) => (
-                <CarouselItem key={index} className="flex items-center justify-center">
-                  <div className="relative w-[400px] h-[300px]">
-                    <Image
-                      src={bildeItem.imageUrl}
-                      alt={bildeItem.tekst}
-                      fill={true}
-                      className="object-cover rounded-lg"
-                    />
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
-          </Carousel> */}
-          <p>Her kommer pågående prosjekter</p>
-
+      <div className="container mx-auto px-4 my-20">
+        <h2 className="text-3xl font-bold text-gray-800 mb-10 text-center">Pågående prosjekter</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {events.map((event, index) => (
+            <div key={index} className="bg-white rounded shadow overflow-hidden">
+              <div className="relative h-48">
+                <Image
+                  src={event.imageUrl}
+                  alt={event.title}
+                  fill={true}
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold mb-2">{event.title}</h3>
+                <p className="text-gray-600">{event.tekst}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>

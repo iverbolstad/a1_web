@@ -23,6 +23,7 @@ export async function getEvents() {
   return posts;
 }
 
+
 export async function getLogo() {
   const posts = await client.fetch(
     `*[_type == "logo"]{
