@@ -14,11 +14,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+<html lang="en">
       <body className={`bg-[#FCFFFD] ${inter.className} text-[#333533]`}>
-        <div className="flex flex-col min-h-screen">
+        <div className="relative flex flex-col min-h-screen">
           <Header />
-          <main className="flex-grow">{children}</main>
+          <main className="relative flex-grow">{children}</main>
           <Footer />
         </div>
       </body>
