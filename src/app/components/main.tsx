@@ -1,4 +1,3 @@
-import EventsPage from "./events";
 import FrontPage from "./frontpage";
 export const Main = () => {
   return (

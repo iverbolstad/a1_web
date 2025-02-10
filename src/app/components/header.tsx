@@ -1,33 +1,31 @@
 "use client";
 
-import { getLogo } from "../lib/sanity";
-import { useState, useEffect } from "react";
-import Image from "next/image";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
-interface Logo {
-  title: string;
-  imageUrl: string;
-}
+// interface Logo {
+//   title: string;
+//   imageUrl: string;
+// }
 
 export const Header = () => {
-  const [logo, setLogo] = useState<Logo[]>([]);
+  // const [logo, setLogo] = useState<Logo[]>([]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  useEffect(() => {
-    async function fetchEvents() {
-      try {
-        const data = await getLogo();
-        setLogo(data);
-      } catch (error) {
-        console.error("Error fetching events:", error);
-      } finally {
-      }
-    }
+  // useEffect(() => {
+  //   async function fetchEvents() {
+  //     try {
+  //       // const data = await getLogo();
+  //       // setLogo(data);
+  //     } catch (error) {
+  //       console.error("Error fetching events:", error);
+  //     } finally {
+  //     }
+  //   }
 
-    fetchEvents();
-  }, []);
+  //   fetchEvents();
+  // }, []);
 
   return (
     <header className="absolute top-0 left-0 w-full z-10 text-center p-4">

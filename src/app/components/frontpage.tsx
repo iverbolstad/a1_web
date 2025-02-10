@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import {
   getForside,
-  getKundeLogo,
   getEvents,
   getTjenester,
 } from "../lib/sanity";
@@ -25,10 +24,10 @@ interface HomePage {
   imageUrl: string;
 }
 
-interface Kunde {
-  tekst: string;
-  imageUrl: string;
-}
+// interface Kunde {
+//   tekst: string;
+//   imageUrl: string;
+// }
 
 interface Event {
   title: string;
@@ -46,7 +45,7 @@ interface Service {
 const FrontPage = () => {
   const [homePage, setHomePage] = useState<HomePage[]>([]);
   const [loading, setLoading] = useState(true);
-  const [kunde, setKunde] = useState<Kunde[]>([]);
+  // const [kunde, setKunde] = useState<Kunde[]>([]);
   const [events, setEvents] = useState<Event[]>([]);
   const [services, setServices] = useState<Service[]>([]);
 
@@ -54,10 +53,10 @@ const FrontPage = () => {
     async function fetchEvents() {
       try {
         const data = await getForside();
-        const kunde = await getKundeLogo();
+        // const kunde = await getKundeLogo();
         const events = await getEvents();
         const services = await getTjenester();
-        setKunde(kunde);
+        // setKunde(kunde);
         setHomePage(data);
         setEvents(events);
         setServices(services);
