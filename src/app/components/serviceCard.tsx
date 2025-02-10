@@ -1,21 +1,26 @@
 import React from "react";
+import Image from "next/image";
 
 type ServiceCardProps = {
-    imageUrl: string;
-    title: string;
-    text: string;
+  imageUrl: string;
+  title: string;
+  text: string;
 };
 
 const ServiceCard: React.FC<ServiceCardProps> = ({ imageUrl, title, text }) => {
   return (
-    <div className="rounded-2xl shadow-lg p-4 bg-green-700 text-white max-w-sm">
-      <img
-        src={imageUrl}
-        alt={title}
-        className="w-full h-48 object-cover rounded-t-2xl mb-4"
-      />
-      <h2 className="text-xl font-bold mb-2">{title}</h2>
-      <p className="text-base">{text}</p>
+    <div className="rounded-xl shadow-lg p-4 bg-[#206306] text-white">
+      <div className="relative overflow-hidden rounded-t-lg aspect-[3/2]">
+        <Image
+          src={imageUrl}
+          alt={title}
+          layout="fill"
+          objectFit="cover"
+          className="rounded-lg"
+        />
+      </div>
+      <h2 className="text-2xl font-bold mt-4 mb-2">{title}</h2>
+      <p className="text-lg border-t pt-3">{text}</p>
     </div>
   );
 };

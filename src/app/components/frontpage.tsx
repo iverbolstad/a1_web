@@ -1,11 +1,23 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getForside, getKundeLogo, getEvents } from "../lib/sanity";
+import {
+  getForside,
+  getKundeLogo,
+  getEvents,
+  getTjenester,
+} from "../lib/sanity";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import ServiceCard from "./serviceCard";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 interface HomePage {
   tekst: string;
@@ -23,11 +35,18 @@ interface Event {
   imageUrl: string;
 }
 
+interface Service {
+  imageUrl: string;
+  beskrivelse: string;
+  title: string;
+}
+
 const FrontPage = () => {
   const [homePage, setHomePage] = useState<HomePage[]>([]);
   const [loading, setLoading] = useState(true);
   const [kunde, setKunde] = useState<Kunde[]>([]);
   const [events, setEvents] = useState<Event[]>([]);
+  const [services, setServices] = useState<Service[]>([]);
 
   useEffect(() => {
     async function fetchEvents() {
@@ -35,9 +54,11 @@ const FrontPage = () => {
         const data = await getForside();
         const kunde = await getKundeLogo();
         const events = await getEvents();
+        const services = await getTjenester();
         setKunde(kunde);
         setHomePage(data);
         setEvents(events);
+        setServices(services);
       } catch (error) {
         console.error("Error fetching events:", error);
       } finally {
@@ -72,18 +93,45 @@ const FrontPage = () => {
               </div>
               <div className="flex space-x-4 mt-8">
                 <Link href="/tjenester">
-                  <Button variant="green" arrow>Våre tjenester</Button>
+                  <Button variant="green" arrow>
+                    Våre tjenester
+                  </Button>
                 </Link>
                 <Link href="/omoss">
-                  <Button variant="yellow" arrow>Om oss</Button>
+                  <Button variant="yellow" arrow>
+                    Om oss
+                  </Button>
                 </Link>
               </div>
             </div>
           </div>
         ))}
-        <div>
-            {/* Servicecards */}
-            <ServiceCard title="Test" imageUrl="test" text="Hej" />
+        <div className="relative m-20 space-y-10">
+          <Link href="/tjenester">
+            <Button variant="greenoutline" size="bigdef" className="">
+              Våre tjenester
+            </Button>
+          </Link>
+          <div className="">
+            <p className="text-5xl font-bold">
+              Vi tilbyr ulike tjenester basert på ditt behov
+            </p>
+          </div>
+          <Carousel className="items-center justify-center">
+            <CarouselContent className="">
+              {services.map((service, idx) => (
+                <CarouselItem className="md:basis-1/3 p-6" key={idx}>
+                  <ServiceCard
+                    title={service.title}
+                    imageUrl={service.imageUrl}
+                    text={service.beskrivelse}
+                  />
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
         </div>
       </div>
     </>

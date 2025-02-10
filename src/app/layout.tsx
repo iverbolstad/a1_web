@@ -1,11 +1,12 @@
 import "./globals.css";
-import { Inter } from "next/font/google";
+import { Figtree } from "next/font/google";
 import { Header } from "./components/header";
 import { Footer } from "./components/footer";
 
-const inter = Inter({
+const figtree = Figtree({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+  variable: "--font-figtree",
 });
 
 export default function RootLayout({
@@ -14,8 +15,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-<html lang="en">
-      <body className={`bg-[#FCFFFD] ${inter.className} text-[#333533]`}>
+    <html lang="en" className={figtree.variable}>
+      <body className="bg-[#FCFFFD] text-[#333533]">
         <div className="relative flex flex-col min-h-screen">
           <Header />
           <main className="relative flex-grow">{children}</main>
