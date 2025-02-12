@@ -1,45 +1,57 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import Image from "next/image";
+import { getLogo } from "../lib/sanity";
+import { usePathname } from "next/navigation";
 
-// interface Logo {
-//   title: string;
-//   imageUrl: string;
-// }
+interface Logo {
+  title: string;
+  imageUrl: string;
+}
 
 export const Header = () => {
-  // const [logo, setLogo] = useState<Logo[]>([]);
+  const [logo, setLogo] = useState<Logo[]>([]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
 
-  // useEffect(() => {
-  //   async function fetchEvents() {
-  //     try {
-  //       // const data = await getLogo();
-  //       // setLogo(data);
-  //     } catch (error) {
-  //       console.error("Error fetching events:", error);
-  //     } finally {
-  //     }
-  //   }
+  useEffect(() => {
+    async function fetchEvents() {
+      try {
+        const data = await getLogo();
+        setLogo(data);
+      } catch (error) {
+        console.error("Error fetching events:", error);
+      }
+    }
 
-  //   fetchEvents();
-  // }, []);
+    fetchEvents();
+  }, []);
 
   return (
-    <header className="absolute top-0 left-0 w-full z-10 text-center p-4">
+    <header
+      className={`absolute top-0 left-0 w-full z-10 text-center p-4 transition-all duration-300 ${
+        isHomePage
+          ? "bg-transparent"
+          : "bg-gradient-to-b from-[#0e1f08] to-transparent"
+      }`}
+    >
       <div className="flex justify-between items-center w-full">
         <div className="flex items-center space-x-4">
-          {/* <Link href={"/"}>
-            {logo[1]?.imageUrl && (
-              <Image src={logo[1].imageUrl} width={250} height={70} alt="Logo" className="max-w-[150px] md:max-w-[250px]" priority />
-            )}
-          </Link> */}
           <Link href={"/"}>
-            <p className="text-white font-bold text-xl md:text-xl">
-              Anleggsgartner 1
-            </p>
+            {logo[1]?.imageUrl && (
+              <Image
+                src={logo[1].imageUrl}
+                width={70}
+                height={70}
+                alt="Logo"
+                className="max-w-[150px] md:max-w-[250px]"
+                priority
+              />
+            )}
           </Link>
         </div>
 
@@ -67,18 +79,26 @@ export const Header = () => {
         </button>
 
         {/* Desktop menu */}
-        <div className="hidden md:flex items-center space-x-4">
+        <div className="hidden md:flex items-center space-x-4 text-white">
           <Link href={"/"}>
-            <Button variant="link" className="text-white">Hjem</Button>
+            <Button variant="link" className="text-white">
+              Hjem
+            </Button>
           </Link>
           <Link href={"/tjenester"}>
-            <Button variant="link" className="text-white">Tjenester</Button>
+            <Button variant="link" className="text-white">
+              Tjenester
+            </Button>
           </Link>
           <Link href={"/omoss"}>
-            <Button variant="link" className="text-white">Om oss</Button>
+            <Button variant="link" className="text-white">
+              Om oss
+            </Button>
           </Link>
           <Link href={"/kontakt"}>
-            <Button variant="yellow" className="text-black bg-[#fbc91b]" arrow>Kontakt</Button>
+            <Button variant="yellow" className="text-black bg-[#fbc91b]" arrow>
+              Kontakt
+            </Button>
           </Link>
         </div>
       </div>

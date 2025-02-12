@@ -33,7 +33,7 @@ export default function Tjenester() {
     if (loading) return <div>Loading...</div>;
 
     return (
-        <div className="container mx-auto py-8 px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto py-8 px-4 sm:px-6 lg:px-8 pt-28">
             <h1 className="text-4xl font-bold mb-12 text-center">Våre tjenester</h1>
             <div className="space-y-12 md:space-y-16">
                 {tjenester.map((tjeneste: Tjeneste, index: number) => (

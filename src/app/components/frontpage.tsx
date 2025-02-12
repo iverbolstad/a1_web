@@ -1,11 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import {
-  getForside,
-  getEvents,
-  getTjenester,
-} from "../lib/sanity";
+import { getForside, getEvents, getTjenester } from "../lib/sanity";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -146,9 +142,9 @@ const FrontPage = () => {
             <div className="flex justify-between items-center w-full">
               <p className="text-5xl font-bold flex-1">Våre prosjekter</p>
               <p className="text-[#767873] flex-1 max-w-[50%]">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veni.
+                Vi utfører steinlegging, beplantning, drenering
+                og vedlikehold av uteområder. Vi skaper også vakre hager, opparbeider
+                gårdsplasser og setter opp murer.
               </p>
             </div>
             <div>

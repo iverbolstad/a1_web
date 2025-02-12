@@ -1,6 +1,6 @@
 export default function Kontakt() {
     return (
-        <div className="my-10">
+        <div className="my-10 pt-20">
             <h1 className="text-3xl font-bold text-center w-full mb-6">
                 Kontakt oss
             </h1>
