@@ -33,24 +33,24 @@ export const Header = () => {
 
   return (
     <header
-      className={`absolute top-0 left-0 w-full z-10 text-center p-4 transition-all duration-300 ${
-        isHomePage
-          ? "bg-transparent"
-          : "bg-gradient-to-b from-[#0e1f08] to-transparent"
-      }`}
+      className={`absolute top-0 left-0 w-full z-10 text-center p-4 transition-all duration-300 bg-transparent`}
     >
       <div className="flex justify-between items-center w-full">
         <div className="flex items-center space-x-4">
           <Link href={"/"}>
             {logo[1]?.imageUrl && (
-              <Image
-                src={logo[1].imageUrl}
-                width={70}
-                height={70}
-                alt="Logo"
-                className="max-w-[150px] md:max-w-[250px]"
-                priority
-              />
+              <div
+                className={isHomePage ? "" : "bg-[#206306]/60 p-2 rounded-lg"}
+              >
+                <Image
+                  src={logo[1].imageUrl}
+                  width={70}
+                  height={70}
+                  alt="Logo"
+                  className="max-w-[150px] md:max-w-[250px]"
+                  priority
+                />
+              </div>
             )}
           </Link>
         </div>
@@ -81,22 +81,35 @@ export const Header = () => {
         {/* Desktop menu */}
         <div className="hidden md:flex items-center space-x-4 text-white">
           <Link href={"/"}>
-            <Button variant="link" className="text-white">
+            <Button
+              variant="link"
+              className={isHomePage ? "text-white" : "text-black"}
+            >
               Hjem
             </Button>
           </Link>
           <Link href={"/tjenester"}>
-            <Button variant="link" className="text-white">
+            <Button
+              variant="link"
+              className={isHomePage ? "text-white" : "text-black"}
+            >
               Tjenester
             </Button>
           </Link>
           <Link href={"/omoss"}>
-            <Button variant="link" className="text-white">
+            <Button
+              variant="link"
+              className={isHomePage ? "text-white" : "text-black"}
+            >
               Om oss
             </Button>
           </Link>
           <Link href={"/kontakt"}>
-            <Button variant="yellow" className="text-black bg-[#fbc91b]" arrow>
+            <Button
+              variant="yellow"
+              className={`bg-[#fbc91b] text-black`}
+              arrow
+            >
               Kontakt
             </Button>
           </Link>
