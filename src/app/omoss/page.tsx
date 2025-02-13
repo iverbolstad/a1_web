@@ -33,7 +33,7 @@ export default function OmOss() {
         return <p>Laster...</p>;
     }
     return (
-        <div className="container mx-auto px-4 py-16 max-w-6xl">
+        <div className="container mx-auto px-4 py-16 max-w-6xl pt-28">
             <h1 className="text-4xl font-bold text-gray-900 text-center">Om oss</h1>
 
             <div className="mt-8 lg:flex lg:gap-8">

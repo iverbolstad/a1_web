@@ -1,9 +1,9 @@
-import EventsPage from "./events";
+import FrontPage from "./frontpage";
 export const Main = () => {
   return (
-    <main className="flex-grow text-center">
+    <main className="">
       <div>
-        <EventsPage />
+        <FrontPage />
       </div>
     </main>
   );

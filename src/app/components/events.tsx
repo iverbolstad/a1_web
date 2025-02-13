@@ -53,19 +53,11 @@ const EventsPage = () => {
   }
 
   return (
-    <div className="mt-10">
-      <div className="my-20">
+    <>
+      <div className="">
         {homePage.map((event, idx) => (
           <div className="flex flex-col md:flex-row w-full min-h-[50vh] md:h-[70vh]" key={idx}>
-            <div className="flex flex-col items-center justify-center w-full md:w-1/2 bg-opacity-80 px-6 py-8 md:py-2">
-              <div className="text-3xl md:text-5xl text-center">{event.tekst}</div>
-              <Link href="/tjenester">
-                <Button variant="outline" className="mt-8 bg-gray-800 text-white hover:bg-gray-700">
-                  Utforsk våre tjenester
-                </Button>
-              </Link>
-            </div>
-            <div className="relative w-full md:w-1/2 h-[40vh] md:h-full">
+            <div className="relative w-full h-[90vh]">
               <Image
                 src={event.imageUrl}
                 fill={true}
@@ -73,6 +65,21 @@ const EventsPage = () => {
                 className="object-cover"
                 priority
               />
+              <div className="absolute inset-0 flex flex-col items-start justify-center text-white pl-8">
+                <div className="text-3xl md:text-5xl text-left font-semibold">{event.tekst}</div>
+                <div className="flex space-x-4 mt-8">
+                  <Link href="/tjenester">
+                    <Button variant="green" className="">
+                      Våre tjenester
+                    </Button>
+                  </Link>
+                  <Link href="/omoss">
+                    <Button variant="yellow" className="">
+                      Om oss
+                    </Button>
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
         ))}
@@ -85,8 +92,8 @@ const EventsPage = () => {
           </div>
           <div className="flex flex-wrap items-center justify-center gap-12 md:gap-16">
             {kunde.map((kundeItem, index) => (
-              <div 
-                key={index} 
+              <div
+                key={index}
                 className="relative group transition-transform hover:scale-105"
               >
                 <Image
@@ -122,7 +129,7 @@ const EventsPage = () => {
           ))}
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

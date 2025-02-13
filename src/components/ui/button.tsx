@@ -1,6 +1,7 @@
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
+import { IoIosArrowRoundForward } from "react-icons/io";
 
 import { cn } from "@/lib/utils"
 
@@ -19,9 +20,13 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        green: "bg-[#206306] text-white rounded-full shadow hover:bg-[#206306]/75",
+        greenoutline: "text-[#206306] border border-[#206306] rounded-full shadow hover:bg-[#206306]/20",
+        yellow: "border border-[#fbc91b] bg-transparent text-[#fbc91b] rounded-full shadow hover:bg-[#fbc91b]/50",
       },
       size: {
         default: "h-9 px-4 py-2",
+        bigdef: "h-12 px-6 py-4",
         sm: "h-8 rounded-md px-3 text-xs",
         lg: "h-10 rounded-md px-8",
         icon: "h-9 w-9",
@@ -38,17 +43,21 @@ export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean
+  arrow?: boolean
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
+  ({ className, variant, size, asChild = false, arrow = false, ...props }, ref) => {
     const Comp = asChild ? Slot : "button"
     return (
       <Comp
         className={cn(buttonVariants({ variant, size, className }))}
         ref={ref}
         {...props}
-      />
+      >
+        {props.children}
+        {arrow && <IoIosArrowRoundForward className="ml-2 size-4" />}
+      </Comp>
     )
   }
 )

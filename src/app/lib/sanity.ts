@@ -15,7 +15,8 @@ export async function getEvents() {
   const posts = await client.fetch(
     `*[_type == "event"]{
       title, 
-      tekst, 
+      tekst,
+      ongoing, 
       "imageUrl": bilde.asset->url
     }`
   );
